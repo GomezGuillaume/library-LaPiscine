@@ -25,6 +25,9 @@ class AuthorController extends AbstractController
         // j'utilise l'authorRepository et la méthode findAll() pour récupérer tous les éléments
         // de ma table authors
         $authors = $authorRepository->findAll();
+            return $this->render("authors.html.twig", [
+                "authors" => $authors
+                ]);
 
         dump($authors); die;
     }

@@ -30,7 +30,7 @@ class Author
     /**
      * @ORM\Column(type="date")
      */
-    private $birthname;
+    private $birthdate;
 
     /**
      * @ORM\Column(type="date")
@@ -76,17 +76,23 @@ class Author
         return $this;
     }
 
-    public function getBirthname(): ?\DateTimeInterface
+    /**
+     * @return mixed
+     */
+    public function getBirthdate()
     {
-        return $this->birthname;
+        return $this->birthdate;
     }
 
-    public function setBirthname(\DateTimeInterface $birthname): self
+    /**
+     * @param mixed $birthdate
+     */
+    public function setBirthdate($birthdate): void
     {
-        $this->birthname = $birthname;
-
-        return $this;
+        $this->birthdate = $birthdate;
     }
+
+
 
     public function getDeathdate(): ?\DateTimeInterface
     {
