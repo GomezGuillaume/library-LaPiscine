@@ -3,7 +3,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Book;
 use App\Repository\AuthorRepository;
+use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,6 +42,28 @@ class AuthorController extends AbstractController {
         $author = $authorRepository->find($id);
         return $this->render("Author2.html.twig", [
             "author" => $author
+        ]);
+
+    }
+
+
+    /**
+     * @Route ("/books", name = "books")
+     */
+    public function books (BookRepository $bookRepository) {
+        return $this->render("books.html.twig", [
+            "books" => $books
+        ]);
+    }
+
+
+    /**
+     * @Route ("/book/{id}", name = "book2")
+     */
+    public function book2 (BookRepository $bookRepository, $id) {
+        $book = $bookRepository->find($id);
+        return $this->render("book2.html.twig", [
+            "book" => $book
         ]);
 
     }

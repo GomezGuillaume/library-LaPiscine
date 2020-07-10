@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="book">
+        <p>Titre : {{ book.title }}</p>
+        <p>Genre : {{ book.genre }}</p>
+        <p>Nombre de pages : {{ book.nb_pages }}</p>
+    </div>
+
+{% endblock content %}
