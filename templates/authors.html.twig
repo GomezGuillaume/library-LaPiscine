@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-{% for author in authors %}
 
     <div class="authors">
+{% for author in authors %}
+
+    <div class="author">
     <p>Nom : {{ author.firstname }}</p>
     <p>Prénom : {{ author.lastname }}</p>
     <p>{{ author.birthdate | date("d/m/Y") }}</p>
     <p class="text">Biographie : {{ author.biography }}</p>
-    <p>{{ author.published }}</p>
+        <a href="{{ path('author_2', {'id' : author.id}) }}"> Voir cet autheur </a>
     </div>
 
 {% endfor %}
-
+    </div>
 {% endblock content %}

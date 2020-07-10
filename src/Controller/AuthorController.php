@@ -8,11 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AuthorController extends AbstractController
-{
+class AuthorController extends AbstractController {
 
     /**
-     * @Route("/authors", name="authors_list")
+     * @Route("/authors", name="authorslist")
      */
     // je demande à Symfony de m'instancier la classe AuthorRepository
     // avec le mécanisme d'Autowire (je passe en paramètre de la méthode
@@ -30,6 +29,19 @@ class AuthorController extends AbstractController
                 ]);
 
         dump($authors); die;
+    }
+
+
+
+    /**
+     * @Route ("/author/{id}", name = "author_2")
+     */
+    public function Author2 (AuthorRepository $authorRepository, $id) {
+        $author = $authorRepository->find($id);
+        return $this->render("Author2.html.twig", [
+            "author" => $author
+        ]);
+
     }
 
 }
