@@ -72,4 +72,19 @@ class AuthorController extends AbstractController {
 
     }
 
+
+    /**
+     * @Route ("/books/genre", name = "booksGenre")
+     */
+    public function BookGenre (BookRepository $bookRepository) {
+        $genre = "Scientifique";
+
+        $books = $bookRepository->findBy(["genre" => $genre]);
+
+        return $this->render("booksGenre.html.twig", [
+            "books" => $books,
+            "genre" => $genre
+        ]);
+    }
+
 }
