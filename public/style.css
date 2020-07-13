@@ -44,3 +44,28 @@ footer{
     padding: 1%;
     margin-top: 45%;
 }
+
+/* BOOKS */
+
+.books{
+    text-align: center;
+    padding-top: 20%;
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.book{
+    width: 25%;
+
+}
+
+.book2{
+    text-align: center;
+    padding-top: 2%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    width: 20%;
+    padding-top: 20%;
+}

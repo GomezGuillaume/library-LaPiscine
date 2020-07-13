@@ -51,6 +51,7 @@ class AuthorController extends AbstractController {
      * @Route ("/books", name = "books")
      */
     public function books (BookRepository $bookRepository) {
+        $books = $bookRepository->findAll();
         return $this->render("books.html.twig", [
             "books" => $books
         ]);
@@ -58,11 +59,11 @@ class AuthorController extends AbstractController {
 
 
     /**
-     * @Route ("/book/{id}", name = "book2")
+     * @Route ("/book/{id}", name = "book")
      */
     public function book2 (BookRepository $bookRepository, $id) {
         $book = $bookRepository->find($id);
-        return $this->render("book2.html.twig", [
+        return $this->render("book.html.twig", [
             "book" => $book
         ]);
 
