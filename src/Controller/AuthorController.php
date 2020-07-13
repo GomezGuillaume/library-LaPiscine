@@ -73,11 +73,14 @@ class AuthorController extends AbstractController {
     }
 
 
+
+
+    /* J'ai crée une route booksGenre, dans laquelle il y a le genre en wildcard, ce qui permet de rentrer directement
+        le genre dans l'URL du navigateur   */
     /**
-     * @Route ("/books/genre", name = "booksGenre")
+     * @Route ("/books/genre/{genre}", name = "booksGenre")
      */
-    public function BookGenre (BookRepository $bookRepository) {
-        $genre = "Scientifique";
+    public function BookGenre (BookRepository $bookRepository, $genre) {
 
         $books = $bookRepository->findBy(["genre" => $genre]);
 
@@ -85,6 +88,13 @@ class AuthorController extends AbstractController {
             "books" => $books,
             "genre" => $genre
         ]);
+    }
+
+    /**
+     * @Route("/books/search/resume", name = "BooksSearchResume)"
+     */
+    public function BookSearchResume (BookRepository $bookRepository) {
+        $bookRepository->findByWordsInResume();
     }
 
 }
