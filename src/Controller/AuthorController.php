@@ -47,6 +47,9 @@ class AuthorController extends AbstractController {
     }
 
 
+
+    /* Symfony m'instancie la classe $bookRepository, avec l'autowire.
+        Le bookRepository, est la classe qui permet de faire des requêtes dans la table books */
     /**
      * @Route ("/books", name = "books")
      */
