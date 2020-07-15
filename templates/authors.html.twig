@@ -10,7 +10,7 @@
     <p>Prénom : {{ author.lastname }}</p>
     <p>{{ author.birthdate | date("d/m/Y") }}</p>
     <p class="text">Biographie : {{ author.biography }}</p>
-        <a href="{{ path('author_2', {'id' : author.id}) }}"> Voir cet autheur </a>
+        <a href="{{ path('author2', {'id' : author.id}) }}"> Voir cet autheur </a>
     </div>
 
 {% endfor %}

@@ -1,0 +1,29 @@
+{% extends "BaseHome.html.twig" %}
+
+
+{% block home %}
+    <div class="book_home">
+    {% for book in books %}
+        <div class="book_boucle">
+            <p>Titre : {{ book.title }}</p>
+            <p>Genre : {{ book.genre }}</p>
+            <p>Nombres de pages : {{ book.NbPages }}</p>
+            <a href="{{ path('books', {'id' : book.id}) }}"> Voir ce livre </a>
+        </div>
+
+    {% endfor %}
+    </div>
+
+    <div class="authors_home">
+    {% for author in authors %}
+        <div class="author_boucle">
+            <p>Nom : {{ author.firstname }}</p>
+            <p>Prénom : {{ author.lastname }}</p>
+            <p>{{ author.birthdate | date("d/m/Y") }}</p>
+            <p class="text">Biographie : {{ author.biography }}</p>
+            <a href="{{ path('author2', {'id' : author.id}) }}"> Voir cet autheur </a>
+        </div>
+
+    {% endfor %}
+    </div>
+{% endblock home %}

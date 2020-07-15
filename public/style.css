@@ -8,6 +8,13 @@ header{
     padding: 2%;
 }
 
+ul{
+    list-style-type: none;
+}
+
+li{
+}
+
 h2{
     text-align: center;
     padding-top: 2%;
@@ -45,8 +52,9 @@ footer{
     margin-top: 45%;
 }
 
-/* BOOKS */
 
+
+/* CSS BOOKS */
 .books{
     text-align: center;
     padding-top: 20%;
@@ -78,4 +86,35 @@ main{
     text-align: center;
     margin: 0 auto;
     padding-top: 3%;
+}
+
+
+
+/* CSS home.html.twig */
+.book_home{
+    text-align: center;
+    padding-top: 4%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.book_boucle{
+    padding-left: 5%;
+    margin: 0 auto;
+}
+
+.authors_home{
+    text-align: center;
+    padding-top: 2%;
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.author_boucle{
+    width: 33%;
+    padding-top: 10%;
 }

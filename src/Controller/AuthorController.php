@@ -29,18 +29,16 @@ class AuthorController extends AbstractController {
             return $this->render("authors.html.twig", [
                 "authors" => $authors
                 ]);
-
-        dump($authors); die;
     }
 
 
 
     /**
-     * @Route ("/author/{id}", name = "author_2")
+     * @Route ("/author/{id}", name = "author2")
      */
     public function Author2 (AuthorRepository $authorRepository, $id) {
         $author = $authorRepository->find($id);
-        return $this->render("Author2.html.twig", [
+        return $this->render("author2.html.twig", [
             "author" => $author
         ]);
 
