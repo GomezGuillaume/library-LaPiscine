@@ -62,10 +62,10 @@ class BooksController extends AbstractController {
      * @Route("/books/search/resume", name = "BooksSearchResume")"
      */
     public function BookSearchResume (BookRepository $bookRepository, Request $request) {
-        $bookRepository->findByWordsInResume();
-
 
         $word = $request->query->get('search');
+
+        $bookRepository->findByWordsInResume($word);
 
         $books = [];
 
