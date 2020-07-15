@@ -7,7 +7,7 @@ use App\Entity\Book;
 use App\Repository\AuthorRepository;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AuthorController extends AbstractController {
@@ -91,10 +91,23 @@ class AuthorController extends AbstractController {
     }
 
     /**
-     * @Route("/books/search/resume", name = "BooksSearchResume)"
+     * @Route("/books/search/resume", name = "BooksSearchResume")"
      */
-    public function BookSearchResume (BookRepository $bookRepository) {
+    public function BookSearchResume (BookRepository $bookRepository, Request $request) {
         $bookRepository->findByWordsInResume();
+
+        $word = $request->query->get('search');
+
+        $books = [];
+
+        if (!empty($word)) {
+            $books = $bookRepository->findByWordsInResume($word);
+        }
+
+
+        return $this->render('search.html.twig', [
+            'books' => $books
+        ]);
     }
 
 }
