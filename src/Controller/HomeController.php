@@ -23,9 +23,8 @@ class HomeController extends AbstractController {
             "authors" => $authors,
             "books" => $books
         ]);
-
-
     }
+
 
 
 }

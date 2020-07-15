@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Repository\AuthorRepository;
 use App\Repository\BookRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,8 @@ class BooksController extends AbstractController {
 
 
     /* Symfony m'instancie la classe $bookRepository, avec l'autowire.
-       Le bookRepository, est la classe qui permet de faire des requêtes dans la table books */
+       Le bookRepository, est la classe qui permet de faire des requêtes
+        dans la table books */
     /**
      * @Route ("/books", name = "books")
      */
@@ -41,7 +43,9 @@ class BooksController extends AbstractController {
 
 
 
-    /* J'ai crée une route booksGenre, dans laquelle il y a le genre en wildcard, ce qui permet de rentrer directement
+    /* J'ai crée une route booksGenre,
+        dans laquelle il y a le genre en wildcard,
+        ce qui permet de rentrer directement
         le genre dans l'URL du navigateur   */
     /**
      * @Route ("/books/genre/{genre}", name = "booksGenre")
@@ -77,6 +81,26 @@ class BooksController extends AbstractController {
         return $this->render('booksSearch.html.twig', [
             'books' => $books
         ]);
+    }
+
+
+    /**
+     * @Route ("books/insert", name = "booksInsert")
+     */
+    public function insertBook (EntityManagerInterface $entityManager) {
+
+        // Les entiés font le lien avec les tables
+        // donc pour créer un enregistrement dans ma table book, je crée une nouvelle instance de l'entité Book
+        $book = new Book();
+
+        // Je lui donne les valeurs des colonnes avec les setters
+        $book->setTitle("L'histoire du temps et de l'espace temps");
+        $book->setGenre("Astrophycal");
+        $book->setNbPages(300);
+        $book->setResume("Notre temps possède 4 dimensions. Mais peut-être qu'une autre dimension en possède plus");
+
+        $entityManager->persist($book);
+        $entityManager->flush();
     }
 
 }
