@@ -96,6 +96,7 @@ class AuthorController extends AbstractController {
     public function BookSearchResume (BookRepository $bookRepository, Request $request) {
         $bookRepository->findByWordsInResume();
 
+
         $word = $request->query->get('search');
 
         $books = [];

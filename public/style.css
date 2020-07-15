@@ -73,3 +73,9 @@ footer{
 .book p{
     padding-top: 3%;
 }
+
+main{
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 3%;
+}
