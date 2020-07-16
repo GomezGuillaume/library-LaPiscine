@@ -1,0 +1,64 @@
+*{
+
+}
+
+
+/* CSS BOOK */
+header{
+    background-color: #648838;
+    padding: 10px;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+}
+
+li{
+    margin: 0 auto;
+}
+
+img {
+    width: 15%;
+    margin: 0 auto;
+    display: flex;
+}
+
+li a{
+    color: Black;
+    text-decoration: none;
+}
+
+.container{
+    display: flex;
+    padding-top: 5%;
+}
+
+.block {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+h2{
+    text-align: center;
+}
+
+footer{
+    background-color: rgba(100, 136, 56);
+    text-align: center;
+    padding: 2%;
+    margin-top: 20%;
+}
+
+/* CSS AUTHOR */
+.authors{
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.author{
+    padding: 1%;
+}
