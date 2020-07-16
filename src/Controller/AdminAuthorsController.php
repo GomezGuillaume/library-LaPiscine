@@ -26,7 +26,7 @@ class AdminAuthorsController extends AbstractController
     /**
      * @Route ("/admin/authors/delete/{id}", name = "AdminAuthorsDelete")
      */
-    public function AdminAuthorsDelete (AuthorRepository $authorRepository, EntityManagerInterface $entityManager)
+    public function AdminAuthorsDelete (AuthorRepository $authorRepository, EntityManagerInterface $entityManager, $id)
     {
         $author = $authorRepository->find($id);
 
