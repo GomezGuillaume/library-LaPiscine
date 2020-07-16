@@ -9,6 +9,7 @@ use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -84,6 +85,8 @@ class BooksController extends AbstractController {
     }
 
 
+
+    // J'ajoute un élément à ma base de donnée 
     /**
      * @Route ("books/insert", name = "booksInsert")
      */
@@ -101,6 +104,40 @@ class BooksController extends AbstractController {
 
         $entityManager->persist($book);
         $entityManager->flush();
+    }
+
+
+
+    // Je modifie ma base de donnée
+    /**
+     * @Route ("/books/update", name = "booksUpdate")
+     */
+    public function booksUpdate (EntityManagerInterface $entityManager, BookRepository $bookRepository) {
+
+        $book = $bookRepository->find(1);
+
+        $book->setTitle("Zob");
+
+        $entityManager->persist($book);
+        $entityManager->flush();
+
+        dump("Mise à jour"); die;
+    }
+
+
+
+    // Je supprime un éléement de ma base de donnée
+    /**
+     * @Route ("/books/delete", name = "booksDelete")
+     */
+    public function booksDelete (BookRepository $bookRepository, EntityManagerInterface $entityManager) {
+
+        $book = $bookRepository->find(6);
+
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return new Response();
     }
 
 }
