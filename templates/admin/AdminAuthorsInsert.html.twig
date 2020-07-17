@@ -3,9 +3,27 @@
 
 {% block content %}
     <div class="form">
-        {# j'affiche mon formulaire avec la fonction twig form, et en parametre le formulaire envoyé
-            depuis le controleur
-         #}
-        {{ form(authorForm) }}
+
+        {{ form_start(authorForm) }}
+
+        <p>{{ form_label(authorForm.firstname) }}
+            {{ form_widget(authorForm.firstname, {'attr' : {'class' : 'input_title'}}) }}</p>
+
+        <p>{{ form_label(authorForm.lastname) }}
+            {{ form_widget(authorForm.lastname) }}</p>
+
+        <p>{{ form_label(authorForm.birthdate) }}
+            {{ form_widget(authorForm.birthdate) }}</p>
+
+        <p>{{ form_label(authorForm.deathdate) }}
+            {{ form_widget(authorForm.deathdate) }}</p>
+
+        <p>{{ form_label(authorForm.biography) }}
+            {{ form_widget(authorForm.biography) }}</p>
+
+        <div class="pt-2">
+            {{ form_widget(authorForm.submit) }}
+        </div>
+
     </div>
 {% endblock content %}

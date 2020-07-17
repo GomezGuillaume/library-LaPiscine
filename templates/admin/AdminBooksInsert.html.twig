@@ -2,10 +2,26 @@
 
 
 {% block content %}
-        <div class="form">
-    {# j'affiche mon formulaire avec la fonction twig form, et en parametre le formulaire envoyé
-        depuis le controleur
-     #}
-    {{ form(bookForm) }}
+        <div class=" form_books">
+
+                {{ form_start(bookForm) }}
+
+                        <p>{{ form_label(bookForm.title) }}
+                        {{ form_widget(bookForm.title, {'attr' : {'class' : 'input_title'}}) }}</p>
+
+                        <p>{{ form_label(bookForm.genre) }}
+                        {{ form_widget(bookForm.genre) }}</p>
+
+                        <p>{{ form_label(bookForm.resume) }}
+                        {{ form_widget(bookForm.resume) }}</p>
+
+                        <p>{{ form_label(bookForm.NbPages) }}
+                        {{ form_widget(bookForm.NbPages) }}</p>
+
+                        <div class="pt-2">
+                        {{ form_widget(bookForm.submit) }}
+                        </div>
+
+                {{ form_end(bookForm) }}
         </div>
 {% endblock content %}

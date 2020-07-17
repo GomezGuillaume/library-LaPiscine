@@ -13,12 +13,24 @@ class AuthorsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('birthdate')
-            ->add('deathdate')
-            ->add('biography')
-            ->add('published')
+            ->add('firstname', null, [
+                "label" => "Nom"
+            ])
+            ->add('lastname', null, [
+                "label" => "Prénom"
+            ])
+            ->add('birthdate', null, [
+                "label" => "Date de naissance"
+            ])
+            ->add('deathdate', null, [
+                "label" => "Décès le"
+            ])
+            ->add('biography', null, [
+                "label" => "Biographie"
+            ])
+            ->add('published', null, [
+                "label" => "Publié le"
+            ])
             ->add("submit", SubmitType::class)
         ;
     }
