@@ -1,0 +1,18 @@
+{% extends 'admin/BaseAuthors.html.twig' %}
+
+{% block content %}
+    <div class="authors">
+        {% for author in authors %}
+
+            <div class="author">
+                <p>Nom : {{ author.firstname }}</p>
+                <p>Prénom : {{ author.lastname }}</p>
+                <p>Biography : {{ author.biography }}</p>
+                <p><a href="{{ path('AdminAuthorsInsert', {'id' : author.id}) }}">Ajouter un auteur</a></p>
+                <p><a href="{{ path('AdminAuthorsUpdate', {'id' : author.id}) }}">Modifier cet auteur</a></p>
+                <p><a href="{{ path('AdminAuthorsDelete', {'id' : author.id}) }}"> Supprimer cet auteur </a></p>
+            </div>
+
+        {% endfor %}
+    </div>
+{% endblock content %}

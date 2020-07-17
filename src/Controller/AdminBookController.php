@@ -24,7 +24,7 @@ class AdminBookController extends AbstractController {
 
         $books = $bookRepository->findAll();
 
-        return $this->render("AdminBooks.html.twig", [
+        return $this->render("admin/AdminBooks.html.twig", [
             "books" => $books
         ]);
     }
@@ -64,7 +64,28 @@ class AdminBookController extends AbstractController {
             $entityManager->flush();
         }
 
-        return $this->render("AdminBooksInsert.html.twig",[
+        return $this->render("admin/AdminBooksInsert.html.twig",[
+            "bookForm" => $bookForm->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/books/update/{id}", name = "AdminBooksUpdate")
+     */
+    public function AdminUpdateBook( Request $request, BookRepository $bookRepository, EntityManagerInterface $entityManager, $id) {
+        $book = $bookRepository->find($id);
+
+        $bookForm = $this->createForm(BooksFormType::class);
+
+        $bookForm->handleRequest($request);
+
+        if ($bookForm->isSubmitted() && $bookForm->isValid()) {
+            $entityManager->persist($book);
+            $entityManager->flush();
+        };
+
+        return $this->render("admin/AdminBooksUpdate.html.twig",[
             "bookForm" => $bookForm->createView()
         ]);
     }

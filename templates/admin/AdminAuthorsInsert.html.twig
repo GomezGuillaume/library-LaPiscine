@@ -1,0 +1,11 @@
+{% extends 'admin/BaseAuthors.html.twig' %}
+
+
+{% block content %}
+    <div class="form">
+        {# j'affiche mon formulaire avec la fonction twig form, et en parametre le formulaire envoyé
+            depuis le controleur
+         #}
+        {{ form(authorForm) }}
+    </div>
+{% endblock content %}
