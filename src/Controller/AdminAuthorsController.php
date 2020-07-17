@@ -4,10 +4,14 @@
 namespace App\Controller;
 
 
+use App\Form\AuthorsFormType;
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\DocBlock\Tags\Author;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class AdminAuthorsController extends AbstractController
 {
@@ -35,5 +39,27 @@ class AdminAuthorsController extends AbstractController
 
         return $this->redirectToRoute(AdminAuthors);
 
+    }
+
+
+    /**
+     * @Route ("/admin/authors/insert", name = "AdminAuthorsInsert")
+     */
+    public function AdminAuthorInsert (Request $request, EntityManagerInterface $entityManager) {
+
+        $author = new \App\Entity\Author();
+
+        $authorForm = $this->createForm(AuthorsFormType::class, $author);
+
+        $authorForm->handleRequest($request);
+
+        if ($authorForm->isSubmitted() && $authorForm->isValid()) {
+            $entityManager->persist($author);
+            $entityManager->flush();
+        };
+
+        return $this->render("AdminAuthorsInsert.html.twig", [
+            "authorForm" =>  $authorForm->createView()
+        ]);
     }
 }

@@ -62,3 +62,8 @@ footer{
 .author{
     padding: 1%;
 }
+
+/* CSS FORM */
+.form{
+    text-align: center;
+}
