@@ -62,6 +62,8 @@ class AdminBookController extends AbstractController {
         if ($bookForm->isSubmitted() && $bookForm->isValid()) {
             $entityManager->persist($book);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre livre à été ajouté');
         }
 
         return $this->render("admin/AdminBooksInsert.html.twig",[
