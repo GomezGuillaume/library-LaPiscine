@@ -4,22 +4,26 @@
 {% block content %}
         <div class=" form_books">
 
-                {{ form_start(bookForm) }}
+                {{ form_start(bookForm, {'attr': {'class': 'book_form'}}) }}
 
-                        <p>{{ form_label(bookForm.title) }}
+                        <p>{{ form_label(bookForm.title, 'titre', {'label_attr': {'class': 'label_label'}}) }}
                         {{ form_widget(bookForm.title, {'attr' : {'class' : 'input_title'}}) }}</p>
+                        {{ form_errors(bookForm.title)}}
 
                         <p>{{ form_label(bookForm.genre) }}
-                        {{ form_widget(bookForm.genre) }}</p>
+                        {{ form_widget(bookForm.genre, {'attr': {'class': 'input_book'}}) }}</p>
+                        {{ form_errors(bookForm.genre)}}
 
                         <p>{{ form_label(bookForm.resume) }}
-                        {{ form_widget(bookForm.resume) }}</p>
+                        {{ form_widget(bookForm.resume, {'attr': {'class': 'input_book'}}) }}</p>
+                        {{ form_errors(bookForm.resume)}}
 
                         <p>{{ form_label(bookForm.NbPages) }}
-                        {{ form_widget(bookForm.NbPages) }}</p>
+                        {{ form_widget(bookForm.NbPages, {'attr': {'class': 'input_book'}}) }}</p>
+                        {{ form_errors(bookForm.NbPages)}}
 
                         <div class="pt-2">
-                        {{ form_widget(bookForm.submit) }}
+                        {{ form_widget(bookForm.submit, {'attr': {'class': 'input_book'}}) }}
                         </div>
 
                 {{ form_end(bookForm) }}

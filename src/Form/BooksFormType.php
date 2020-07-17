@@ -14,11 +14,22 @@ class BooksFormType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                "label" => "Titre"
+                "label" => "Titre",
+                "required" => false
             ])
-            ->add('NbPages')
-            ->add('genre')
-            ->add('resume')
+
+            ->add('NbPages', null, [
+                "required" => false
+            ])
+
+            ->add('genre', null, [
+                "required" => false
+            ])
+
+            ->add('resume', null, [
+                "required" => false
+            ])
+
             ->add("submit", SubmitType::class)
         ;
     }
