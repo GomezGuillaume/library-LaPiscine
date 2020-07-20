@@ -6,11 +6,13 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BooksFormType;
+use App\Repository\GenreRepository;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminBookController extends AbstractController {
@@ -90,6 +92,27 @@ class AdminBookController extends AbstractController {
         return $this->render("admin/AdminBooksUpdate.html.twig",[
             "bookForm" => $bookForm->createView()
         ]);
+    }
+
+
+
+    /**
+     * @Route ("/admin/books/insertwithgenre", name = "AdminBooksInsertGenre")
+     */
+    public function AdminBooksInsertGenre (GenreRepository $genreRepository, EntityManagerInterface $entityManager) {
+        $genre = $genreRepository->find(6);
+
+        $book = new Book();
+
+        $book->setTitle("Toto");
+        $book->setNbPages(300);
+        $book->setResume("Le temps et l'espzce temps");
+        $book->setGenre($genre);
+
+        $entityManager->persist($book);
+        $entityManager->flush();
+
+        return new Response('Livre ajouté');
     }
 
 }
