@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\Genre;
 use phpDocumentor\Reflection\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -29,8 +31,9 @@ class BooksFormType extends AbstractType
                 "choice_label" => "name"
             ])
 
-            ->add('genre', null, [
-                "required" => false
+            ->add("author", EntityType::class, [
+                "class" => Author::class,
+                "choice_label" => "lastname"
             ])
 
             ->add('resume', null, [

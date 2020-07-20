@@ -115,4 +115,16 @@ class AdminBookController extends AbstractController {
         return new Response('Livre ajouté');
     }
 
+
+    /**
+     * @Route ("/admin/books/genre", name = "BooksGenre")
+     */
+    public function BooksGenre (GenreRepository $genreRepository) {
+        $genre = $genreRepository->findAll();
+
+        return $this->render("BooksGenre.html.twig", [
+            "genre" => $genre
+        ]);
+    }
+
 }

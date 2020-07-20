@@ -31,13 +31,14 @@ li a{
 
 .container{
     display: flex;
-    padding-top: 5%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2%;
+    flex-wrap: wrap;
 }
 
 .block {
-    text-align: center;
-    margin: 0 auto;
-
+    padding: 5%;
 }
 
 h2{
@@ -63,7 +64,7 @@ footer{
     padding: 1%;
 }
 
-/* CSS FORM */
+/* CSS FORMULAIRE */
 .form{
     text-align: center;
 
