@@ -30,12 +30,6 @@ class Book
      */
     private $NbPages;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "Merci de remplir le genre !")
-     */
-    private $genre;
-
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -72,17 +66,6 @@ class Book
         return $this;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
 
     /**
      * @return mixed
