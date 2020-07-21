@@ -67,6 +67,14 @@ footer{
 /* CSS FORMULAIRE */
 .form{
     text-align: center;
+}
+
+
+.formControl{
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 5%;
 
 }
 
@@ -76,3 +84,13 @@ footer{
     display: block;
     text-align: center;
 }
+
+.formControl label{
+    margin-top: 10%;
+    padding-top: 5%;
+}
+
+.formControl button{
+    margin-top: 5%;
+}
+

@@ -55,7 +55,7 @@ class BooksController extends AbstractController {
 
         $books = $bookRepository->findBy(["genre" => $genre]);
 
-        return $this->render("booksGenre.html.twig", [
+        return $this->render("Genre.html.twig", [
             "books" => $books,
             "genre" => $genre
         ]);
