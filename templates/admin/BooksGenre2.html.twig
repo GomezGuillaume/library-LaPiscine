@@ -1,0 +1,15 @@
+{% extends "admin/BaseBooks.html.twig" %}
+
+{% block content %}
+
+        <div>
+                {% for book in books %}
+                        <p>{{ book.title }}</p>
+                        <p>{{ book.NbPages }}</p>
+                        <p>{{ book.resume }}</p>
+                {% endfor %}
+        </div>
+
+        <p>{{ genre.name }}</p>
+
+{% endblock content %}

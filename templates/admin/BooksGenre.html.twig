@@ -2,9 +2,13 @@
 
 {% block content %}
 
-{% for genres in genre %}
+    <ul>
+    {% for genre in genres %}
 
 
-{% endfor %}
+            <li><a href="{{ path('BooksGenres2', {'id' : genre.id}) }}">{{ genre.name }}</a></li>
 
+
+    {% endfor %}
+    </ul>
 {% endblock content %}

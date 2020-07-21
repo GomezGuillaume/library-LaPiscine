@@ -117,13 +117,29 @@ class AdminBookController extends AbstractController {
 
 
     /**
-     * @Route ("/admin/books/genre", name = "BooksGenre")
+     * @Route ("/admin/books/genres", name = "BooksGenres")
      */
-    public function BooksGenre (GenreRepository $genreRepository) {
-        $genre = $genreRepository->findAll();
+    public function BooksGenres (GenreRepository $genreRepository) {
+        $genres = $genreRepository->findAll();
 
-        return $this->render("BooksGenre.html.twig", [
-            "genre" => $genre
+
+        return $this->render("admin/BooksGenre.html.twig", [
+            "genres" => $genres
+        ]);
+    }
+
+
+    /**
+     * @Route ("/admin/books/genres/{id}", name = "BooksGenres2")
+     */
+    public function BooksGenres2 (GenreRepository $genreRepository, BookRepository $bookRepository, $id) {
+        $genre = $genreRepository->find($id);
+
+        $books = $bookRepository->find($id);
+
+        return $this->render("admin/BooksGenre2.html.twig", [
+            "genre" => $genre,
+            "books" => $books
         ]);
     }
 
