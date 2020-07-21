@@ -135,11 +135,9 @@ class AdminBookController extends AbstractController {
     public function BooksGenres2 (GenreRepository $genreRepository, BookRepository $bookRepository, $id) {
         $genre = $genreRepository->find($id);
 
-        $books = $bookRepository->find($id);
 
         return $this->render("admin/BooksGenre2.html.twig", [
             "genre" => $genre,
-            "books" => $books
         ]);
     }
 
