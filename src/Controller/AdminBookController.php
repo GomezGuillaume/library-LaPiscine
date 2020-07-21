@@ -11,9 +11,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminBookController extends AbstractController {
 
@@ -52,7 +54,7 @@ class AdminBookController extends AbstractController {
     /**
      * @Route ("/admin/books/insert", name = "AdminBooksInsert")
      */
-    public function AdminBooksInsert (Request $request, EntityManagerInterface $entityManager) {
+    public function AdminBooksInsert (Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger) {
 
         $book = new Book();
 
@@ -62,6 +64,29 @@ class AdminBookController extends AbstractController {
         $bookForm->handleRequest($request);
 
         if ($bookForm->isSubmitted() && $bookForm->isValid()) {
+
+            $bookCoverFile = $bookForm->get('bookCover')->getData();
+
+            if ($bookCoverFile){
+
+                $originalCoverName = pathinfo($bookCoverFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeCoverName = $slugger->slug($originalCoverName);
+                $uniqueCoverName = $safeCoverName . '-' . uniqid() . '.' . $bookCoverFile->guessExtension();
+
+                try{
+                    $bookCoverFile->move($this->getParameter('book_cover_directory'), $uniqueCoverName);
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+
+                $book->setBookCover($uniqueCoverName);
+            }
+
+
+
+
+
             $entityManager->persist($book);
             $entityManager->flush();
 

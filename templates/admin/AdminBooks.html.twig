@@ -5,6 +5,7 @@
         {% for book in books %}
 
             <div class="block">
+                <img class="adminBook_img" src="{{ asset('uploads/book/'~book.bookCover) }}" alt="">
                 <p>Titre : {{ book.title }}</p>
                 <p>Nombres de pages : {{ book.NbPages }}</p>
                 <p><a href="{{ path("AdminBooksInsert", {'id' : book.id }) }}">Ajouter un livre</a></p>

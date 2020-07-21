@@ -50,6 +50,12 @@ class Book
     private $author;
 
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $bookCover;
+
+
 
 
     public function getId(): ?int
@@ -120,6 +126,22 @@ class Book
         $this->author = $author;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBookCover()
+    {
+        return $this->bookCover;
+    }
+
+    /**
+     * @param mixed $bookCover
+     */
+    public function setBookCover($bookCover): void
+    {
+        $this->bookCover = $bookCover;
     }
 
 

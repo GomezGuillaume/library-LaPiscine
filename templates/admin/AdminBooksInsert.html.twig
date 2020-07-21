@@ -25,6 +25,10 @@
                         {{ form_widget(bookForm.NbPages, {'attr': {'class': 'input_book'}}) }}</p>
                         {{ form_errors(bookForm.NbPages)}}
 
+                        {{ form_label(bookForm.bookCover) }}
+                        {{ form_widget(bookForm.bookCover, {'attr': {'class': 'input_book'}}) }}
+                        {{ form_errors(bookForm.bookCover)}}
+
                         <div class="pt-2">
                         {{ form_widget(bookForm.submit, {'attr': {'class': 'input_book'}}) }}
                         </div>
