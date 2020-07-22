@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController {
 
     /**
-     * @Route ("/", name = "home")
+     * @Route ("/home", name = "home")
      */
     public function home (BookRepository $bookRepository, AuthorRepository $authorRepository) {
 
-        $books = $bookRepository->findBy([], null, 3);
-        $authors = $authorRepository->findBy([], null, 3);
+        $books = $bookRepository->findAll();
+        $authors = $authorRepository->findAll();
         return $this->render("home.html.twig", [
             "authors" => $authors,
             "books" => $books

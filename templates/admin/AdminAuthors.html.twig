@@ -1,4 +1,4 @@
-{% extends 'admin/BaseAuthors.html.twig' %}
+{% extends 'base/BaseAuthors.html.twig' %}
 
 {% block content %}
     <div class="authors">
@@ -15,4 +15,6 @@
 
         {% endfor %}
     </div>
+
+    <button><a href="{{ path('app_logout') }}">Déconnexion</a></button>
 {% endblock content %}

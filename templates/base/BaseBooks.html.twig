@@ -26,9 +26,9 @@
 
        <header>
            <ul>
-               <li><a href={{ path("AdminBooks") }}>Books</a></li>
+               <li><a href={{ path("books") }}>Books</a></li>
                <li><img src="https://www.freeiconspng.com/uploads/open-book-icon-17.png"></li>
-               <li><a href={{ path("AdminAuthors") }}>Authors</a></li>
+               <li><a href={{ path("authorslist") }}>Authors</a></li>
            </ul>
        </header>
 
@@ -39,7 +39,7 @@
        {% block content %}
        {% endblock content %}
 
-        <button><a href="{{ path('app_logout') }}">Déconnexion</a></button>
+
 
        <footer>
            <span>FOOTER</span>
