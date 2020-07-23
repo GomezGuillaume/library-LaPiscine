@@ -94,3 +94,23 @@ footer{
     margin-top: 5%;
 }
 
+.author-home{
+    width: 33%;
+    text-align: center;
+}
+
+.book-book{
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.author-author{
+    display: flex;
+    margin-top: 5%;
+}
+
+.book-home{
+    width: 30%;
+}

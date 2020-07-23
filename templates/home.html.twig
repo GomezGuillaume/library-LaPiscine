@@ -2,9 +2,9 @@
 
 
 {% block home %}
-    <div class="block">
+    <div class="book-book">
     {% for book in books %}
-        <div class="book_boucle">
+        <div class="book-home">
             <p>Titre : {{ book.title }}</p>
             <p>Genre : {{ book.genre.name }}</p>
             <p>Nombres de pages : {{ book.NbPages }}</p>
@@ -14,9 +14,9 @@
     {% endfor %}
     </div>
 
-    <div class="block">
+    <div class="author-author">
     {% for author in authors %}
-        <div class="author_boucle">
+        <div class="author-home">
             <p>Nom : {{ author.firstname }}</p>
             <p>Prénom : {{ author.lastname }}</p>
             <p>{{ author.birthdate | date("d/m/Y") }}</p>
